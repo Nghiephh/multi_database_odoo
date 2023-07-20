@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Inherit Form View to Modify it -->
+    <record id="inherit_view_users_form_create_database" model="ir.ui.view">
+        <field name="name">inherit.res.users.form</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_create_database" class="btn-primary"
+                        groups="base.group_no_one" type="object"
+                        attrs="{'invisible': [('database_id', '!=', False)]}"
+                            string="Create Database" help="Create Database"/>
+            </xpath>
+            <xpath expr="//page[@name='preferences']/group[1]/group[2]" position="inside">
+                <field name="database_id" invisible="0"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
